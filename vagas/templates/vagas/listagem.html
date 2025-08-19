@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/vagas/listagem.css" />
+    <link rel="stylesheet" href="/static/vagas/base.css" />
+    <title>Candidaturas</title>
+  </head>
+  <body>
+    <h1>Listagem de candidaturas</h1>
+
+    <a href="/associacao"> Ir para associação de candidatos e vagas </a>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Candidato</th>
+          <th>Vaga</th>
+          <th>Setor</th>
+          <th>Status</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for candidatura in candidaturas_list %}
+        <tr>
+          <td>{{ candidatura.candidato.nome }}</td>
+          <td>{{ candidatura.vaga.titulo }}</td>
+          <td>{{ candidatura.vaga.setor }}</td>
+          <td>{{ candidatura.status_candidatura }}</td>
+          <td>{{ candidatura.data }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5">Nenhuma candidatura encontrada.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

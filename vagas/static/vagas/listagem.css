@@ -1,0 +1,15 @@
+td {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 24px;
+}
+
+table {
+  margin: 0 auto;
+  width: 80%;
+  border-collapse: collapse;
+}

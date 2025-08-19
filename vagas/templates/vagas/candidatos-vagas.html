@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/vagas/base.css" />
+    <link rel="stylesheet" href="/static/vagas/candidatos-vagas.css" />
+    <title>Associação</title>
+  </head>
+  <body>
+    <h1>Associar candidatos às vagas</h1>
+
+    <form method="POST" action="{% url 'associacao_vagas' %}">
+      {% csrf_token %}
+      <div>
+        <label for="candidato">Selecione um candidato:</label>
+        <select id="candidato" name="candidato">
+          {% for candidato in candidatos %}
+          <option value="{{candidato.id}}">{{candidato.nome}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div>
+        <label for="candidato">Selecione uma vaga:</label>
+        <select id="vaga" name="vaga">
+          {% for vaga in vagas %}
+          <option value="{{vaga.id}}">{{vaga.titulo}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <button type="submit">Fazer associação</button>
+      <a href="/">Voltar à tela inicial</a>
+    </form>
+  </body>
+</html>
+
+<script>
+  document.querySelector("form").addEventListener("submit", function (event) {
+    const formData = new FormData(this);
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
+    console.log(data);
+  });
+</script>

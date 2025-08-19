@@ -1,0 +1,56 @@
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 24px;
+}
+
+table {
+  margin: 0 auto;
+  width: 80%;
+  border-collapse: collapse;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+select {
+  padding: 0.25rem;
+}
+
+button {
+  padding: 0.5rem;
+  font-size: medium;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background-color: darkgreen;
+}
+
+a {
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0.5rem;
+  background-color: crimson;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+a:hover {
+  background-color: darkred;
+}
