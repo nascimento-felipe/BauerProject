@@ -13,6 +13,9 @@ class Vaga(models.Model):
 
   status = models.CharField(max_length=20, choices=STATUS_CHOICES)
 
+  def __str__(self):
+    return self.titulo
+
 class Candidato(models.Model):
 
   nome = models.CharField(max_length=100)
@@ -21,6 +24,9 @@ class Candidato(models.Model):
   experiencia = models.TextField()
 
   vagas = models.ManyToManyField(Vaga, through='Candidatura')
+
+  def __str__(self):
+    return self.nome
 
 class Candidatura(models.Model):
 
@@ -34,4 +40,4 @@ class Candidatura(models.Model):
     ('rejeitada', 'Rejeitada'),
   )
 
-  status_candidatura = models.CharField(max_length=20, choices=STATUS_CANDIDATURA_CHOICES)
+  status_candidatura = models.CharField(max_length=20, choices=STATUS_CANDIDATURA_CHOICES, default='pendente')
