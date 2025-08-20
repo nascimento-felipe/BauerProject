@@ -14,6 +14,11 @@ table {
   border-collapse: collapse;
 }
 
+.botoes {
+  display: flex;
+  gap: 1rem;
+}
+
 a {
   text-align: center;
   font-weight: bold;
