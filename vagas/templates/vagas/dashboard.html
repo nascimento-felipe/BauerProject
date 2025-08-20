@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/vagas/base.css" />
+    <link rel="stylesheet" href="/static/vagas/dashboard.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <h1>Dashboard</h1>
+
+    <div class="botoes">
+      <a href="/listagem">Listagem</a>
+      <a href="/associacao">Associação de vagas</a>
+      <a href="/admin">Página de Admin</a>
+    </div>
+
+    <div class="dashboard-grid">
+      <div>
+        <canvas id="vagasChart"></canvas>
+      </div>
+      <div>
+        <canvas id="candidatoVaga"></canvas>
+      </div>
+
+      <div>
+        <div>
+          <canvas id="setores"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 2rem; font-size: 1.2em">
+      <strong>Média* da idade dos candidatos:</strong>
+      {{media_idade}} anos
+      <br />
+      <span style="font-size: small">*Arredondada para baixo</span>
+    </div>
+  </body>
+</html>
+
+<script>
+  const totalAbertas = {{ total_abertas|safe }};
+  const totalFechadas = {{ total_fechadas|safe }};
+  const totalVagas = {{ total_vagas|safe }};
+
+  const vagasChart = document.getElementById('vagasChart').getContext('2d');
+  new Chart(vagasChart, {
+    type: 'bar',
+    data: {
+      labels: ["Total de vagas"],
+      datasets: [{
+        label: 'Vagas abertas',
+        data: [totalAbertas],
+        backgroundColor: '#4caf50'
+      }, {
+        label: 'Vagas fechadas',
+        data: [totalFechadas],
+        backgroundColor: '#f44336'
+      }, {
+        label: 'Total de vagas',
+        data: [totalVagas],
+        backgroundColor: '#555555'
+      }]
+    }
+  });
+
+  const candidatosVagas = {{ candidatos_por_vaga  | safe }}
+
+  const candidatosVagaChart = document.getElementById('candidatoVaga').getContext('2d');
+  new Chart(candidatosVagaChart, {
+    type: 'bar',
+    data: {
+      labels: Object.keys(candidatosVagas),
+      datasets: [{
+        label: 'Candidatos por Vaga',
+        data: Object.values(candidatosVagas),
+        backgroundColor: '#2196f3'
+      }]
+    }
+  })
+
+  const setores = {{ setores_ordenados | safe }}
+
+  const setoresChart = document.getElementById('setores').getContext('2d')
+
+  const setorLabels = setores.map(item => item.setor);
+  const setorValues = setores.map(item => item.contagem);
+
+  console.log(setores)
+  new Chart(setoresChart, {
+    type: 'bar',
+    data: {
+      labels: setorLabels,
+      datasets: [{
+        label: 'Vagas por Setor',
+        data: setorValues,
+        backgroundColor: '#ff9800'
+      }]
+    }
+  })
+</script>

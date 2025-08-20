@@ -1,0 +1,45 @@
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 2rem;
+}
+
+.dashboard-grid canvas {
+  width: 45vw;
+  min-width: 15em;
+  height: 25vw;
+  max-height: 25em;
+  min-height: 15em;
+  background: #fff;
+  border-radius: 1em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 1em;
+}
+
+.botoes {
+  display: flex;
+  width: auto;
+  gap: 1rem;
+}
+
+a {
+  text-align: center;
+  display: block;
+  padding: 0.6em 1.2em;
+  background-color: #888;
+  color: #fff;
+  border: none;
+  border-radius: 0.4em;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+a:hover {
+  background-color: #666;
+}
