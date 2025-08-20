@@ -30,7 +30,7 @@ a {
   text-align: center;
   display: block;
   padding: 0.6em 1.2em;
-  background-color: #888;
+  background-color: #0192d6;
   color: #fff;
   border: none;
   border-radius: 0.4em;
@@ -41,5 +41,5 @@ a {
 }
 
 a:hover {
-  background-color: #666;
+  background-color: #0173a8;
 }
